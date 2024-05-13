@@ -1,0 +1,10 @@
+package se.omyndigheten.em2024.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import se.omyndigheten.em2024.domain.MatchTips;
+
+/**
+ * Created by Krille on 07/05/2024 20:40
+ */
+public interface MatchTipsRepository extends JpaRepository<MatchTips, Long> {
+}
