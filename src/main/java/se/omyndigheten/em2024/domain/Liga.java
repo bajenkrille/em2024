@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 /**
  * Created by Krille on 01/05/2024 19:46
  */
-@Entity
+//@Entity
 public class Liga {
 
     @Id

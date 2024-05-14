@@ -1,5 +1,6 @@
 drop table if exists deltagare cascade;
-drop table if exists liga;
+drop table if exists match_tips;
+drop table if exists deltagare_seq;
 
 create table match_tips
 (
@@ -23,3 +24,9 @@ create table deltagare
     poang_id      bigint,
     constraint match_tips_fk FOREIGN KEY (match_tips_id) references match_tips(match_tips_id)
 ) engine = InnoDB;
+
+create table deltagare_seq (
+    next_val bigint
+) engine=InnoDB;
+
+insert into deltagare_seq values ( 1 );

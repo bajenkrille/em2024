@@ -1,9 +1,8 @@
 package se.omyndigheten.em2024.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 /**
  * Created by Krille on 01/05/2024 19:41
@@ -13,6 +12,7 @@ public class Deltagare {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long deltagareId;
+
     private Long matchTipsId;
     private Long poangId;
     private String firstName;
@@ -22,6 +22,8 @@ public class Deltagare {
     private String password;
     private String phoneNumber;
     private boolean hasPaid;
+    @OneToMany(mappedBy = "deltagare")
+    private Set<MatchTips> matchTipsSet;
 
     public void setDeltagareId(Long id) {
         this.deltagareId = id;
