@@ -1,6 +1,6 @@
 package se.omyndigheten.em2024.dao;
 
-import se.omyndigheten.em2024.domain.Match;
+import se.omyndigheten.em2024.domain.Matchen;
 import se.omyndigheten.em2024.repositories.MatchRepository;
 
 /**
@@ -14,21 +14,21 @@ public class MatchDaoImpl implements MatchDao {
     }
 
     @Override
-    public Match getById(Long id) {
+    public Matchen getById(Long id) {
         return matchRepository.getReferenceById(id);
     }
 
     @Override
-    public Match saveNewMatch(Match match) {
-        return matchRepository.save(match);
+    public Matchen saveNewMatch(Matchen matchen) {
+        return matchRepository.save(matchen);
     }
 
     @Override
-    public Match updateMatch(Match match) {
-        Match foundMatch = matchRepository.getReferenceById(match.getId());
-        foundMatch.setHemmaMal(match.getHemmaMal());
-        foundMatch.setBortaMal(match.getBortaMal());
-        return matchRepository.save(foundMatch);
+    public Matchen updateMatch(Matchen matchen) {
+        Matchen foundMatchen = matchRepository.getReferenceById(matchen.getId());
+        foundMatchen.setHemmaMal(matchen.getHemmaMal());
+        foundMatchen.setBortaMal(matchen.getBortaMal());
+        return matchRepository.save(foundMatchen);
     }
 
     @Override

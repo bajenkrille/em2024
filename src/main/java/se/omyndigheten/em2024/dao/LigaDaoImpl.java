@@ -22,7 +22,7 @@ public class LigaDaoImpl implements LigaDao {
 
     @Override
     public Liga findLigaByName(String name) {
-        return ligaRepository.findLigaByLigansName(name)
+        return ligaRepository.findLigaByLigaName(name)
                 .orElseThrow();
     }
 
@@ -35,7 +35,7 @@ public class LigaDaoImpl implements LigaDao {
     @Transactional
     public Liga updateLiga(Liga liga) {
         Liga foundLiga = ligaRepository.getReferenceById(liga.getId());
-        foundLiga.setLigansName(liga.getLigansName());
+        foundLiga.setLigaName(liga.getLigaName());
         foundLiga.setDescription(liga.getDescription());
         return ligaRepository.save(foundLiga);
     }

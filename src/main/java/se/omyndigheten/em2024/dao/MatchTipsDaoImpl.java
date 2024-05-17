@@ -27,7 +27,7 @@ public class MatchTipsDaoImpl implements MatchTipsDao {
     @Override
     @Transactional
     public MatchTips updateMatchTips(MatchTips matchTips) {
-        MatchTips foundMatchTips = matchTipsRepository.getReferenceById(matchTips.getMatchTipsId());
+        MatchTips foundMatchTips = matchTipsRepository.getReferenceById(matchTips.getId());
         foundMatchTips.setHemmaMal(matchTips.getHemmaMal());
         foundMatchTips.setBortaMal(matchTips.getBortaMal());
         return matchTipsRepository.save(foundMatchTips);

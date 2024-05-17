@@ -36,7 +36,7 @@ public class DeltagareDaoImpl implements DeltagareDao {
     @Override
     @Transactional
     public Deltagare updateDeltagare(Deltagare deltagare) {
-        Deltagare foundDeltagare = deltagareRepository.getReferenceById(deltagare.getDeltagareId());
+        Deltagare foundDeltagare = deltagareRepository.getReferenceById(deltagare.getId());
         foundDeltagare.setFirstName(deltagare.getFirstName());
         foundDeltagare.setLastName(deltagare.getLastName());
         return deltagareRepository.save(foundDeltagare);
