@@ -1,12 +1,14 @@
 package se.omyndigheten.em2024.dao;
 
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Component;
 import se.omyndigheten.em2024.domain.MatchTips;
 import se.omyndigheten.em2024.repositories.MatchTipsRepository;
 
 /**
  * Created by Krille on 09/05/2024 14:04
  */
+@Component
 public class MatchTipsDaoImpl implements MatchTipsDao {
     private final MatchTipsRepository matchTipsRepository;
 

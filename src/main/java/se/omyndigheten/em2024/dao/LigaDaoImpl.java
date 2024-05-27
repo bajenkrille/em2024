@@ -1,12 +1,14 @@
 package se.omyndigheten.em2024.dao;
 
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Component;
 import se.omyndigheten.em2024.domain.Liga;
 import se.omyndigheten.em2024.repositories.LigaRepository;
 
 /**
  * Created by Krille on 09/05/2024 13:33
  */
+@Component
 public class LigaDaoImpl implements LigaDao {
 
     private final LigaRepository ligaRepository;

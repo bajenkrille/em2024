@@ -1,11 +1,13 @@
 package se.omyndigheten.em2024.dao;
 
+import org.springframework.stereotype.Component;
 import se.omyndigheten.em2024.domain.Matchen;
 import se.omyndigheten.em2024.repositories.MatchRepository;
 
 /**
  * Created by Krille on 09/05/2024 13:48
  */
+@Component
 public class MatchDaoImpl implements MatchDao {
     private final MatchRepository matchRepository;
 

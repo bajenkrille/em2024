@@ -16,8 +16,8 @@ public class Spelschema {
     private String date;
     private String time;
     private String location;
-    @OneToMany(mappedBy = "spelschema")
-    private Set<Matchen> matchenSet;
+//    @OneToMany(mappedBy = "spelschema")
+//    private Set<Matchen> matchenSet;
 
     public Long getId() {
         return id;

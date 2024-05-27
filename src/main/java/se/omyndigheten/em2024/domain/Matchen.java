@@ -13,6 +13,10 @@ public class Matchen {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String date;
+    private String time;
+    private String location;
+    private String grupp;
     private String hemmaLag;
     private String bortaLag;
     private int hemmaMal;
@@ -20,8 +24,8 @@ public class Matchen {
     private boolean played;
     @OneToMany(mappedBy = "matchen")
     private Set<MatchTips> matchTipsSet;
-    @ManyToOne
-    private Spelschema spelschema;
+//    @ManyToOne
+//    private Spelschema spelschema;
 
     public void setId(Long id) {
         this.id = id;
@@ -71,6 +75,38 @@ public class Matchen {
         this.played = played;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getGrupp() {
+        return grupp;
+    }
+
+    public void setGrupp(String group) {
+        this.grupp = group;
+    }
+
     public Set<MatchTips> getMatchTipsSet() {
         return matchTipsSet;
     }
@@ -90,6 +126,10 @@ public class Matchen {
         if (bortaMal != matchen.bortaMal) return false;
         if (played != matchen.played) return false;
         if (!Objects.equals(id, matchen.id)) return false;
+        if (!Objects.equals(date, matchen.date)) return false;
+        if (!Objects.equals(time, matchen.time)) return false;
+        if (!Objects.equals(location, matchen.location)) return false;
+        if (!Objects.equals(grupp, matchen.grupp)) return false;
         if (!Objects.equals(hemmaLag, matchen.hemmaLag)) return false;
         if (!Objects.equals(bortaLag, matchen.bortaLag)) return false;
         return Objects.equals(matchTipsSet, matchen.matchTipsSet);
@@ -98,6 +138,10 @@ public class Matchen {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (time != null ? time.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (grupp != null ? grupp.hashCode() : 0);
         result = 31 * result + (hemmaLag != null ? hemmaLag.hashCode() : 0);
         result = 31 * result + (bortaLag != null ? bortaLag.hashCode() : 0);
         result = 31 * result + hemmaMal;

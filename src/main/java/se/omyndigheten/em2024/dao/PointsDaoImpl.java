@@ -1,12 +1,14 @@
 package se.omyndigheten.em2024.dao;
 
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Component;
 import se.omyndigheten.em2024.domain.Points;
 import se.omyndigheten.em2024.repositories.PointsRepository;
 
 /**
  * Created by Krille on 09/05/2024 13:57
  */
+@Component
 public class PointsDaoImpl implements PointsDao {
     private final PointsRepository pointsRepository;
 
