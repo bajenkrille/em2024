@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <title>EM2024</title>
 </head>
 <body>
 <div class="row" th:fragment="matchen">
-    <div class="col-1 text-bg-success border fs-5 rounded-4">#1 14/6</div>
-    <div class="col-5 text-bg-success border fs-5 rounded-3">Tyskland - Hammarby</div>
+    <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="'#' + ${matchx.id} + ' ' + ${matchx.date}">#1 14/6</div>
+    <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${matchx.hemmaLag} + ' - ' + ${matchx.bortaLag}">Tyskland - Hammarby</div>
     <div class="col-md-2 bg-success border rounded-4">
         <div class="input-group input-group-sm">
             <input type="text" class="form-control" placeholder="" aria-label="Hemma">
@@ -19,6 +19,6 @@
         </div>
     </div>
 </div>
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/js/bootstrap.bundle.min.js "th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

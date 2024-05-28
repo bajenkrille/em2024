@@ -1,5 +1,6 @@
 package se.omyndigheten.em2024.domain;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -19,8 +20,8 @@ public class Matchen {
     private String grupp;
     private String hemmaLag;
     private String bortaLag;
-    private int hemmaMal;
-    private int bortaMal;
+    private Integer hemmaMal;
+    private Integer bortaMal;
     private boolean played;
     @OneToMany(mappedBy = "matchen")
     private Set<MatchTips> matchTipsSet;

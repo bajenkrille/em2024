@@ -28,10 +28,10 @@ public class TipsController {
     public String getTips(Model model){
 
         model.addAttribute("matches", tipsService.getAllMatches());
-        return null;
+        return "matchtips";
     }
 
-    @GetMapping("/matchtips")
+    //@GetMapping("/matchtips")
     public String matchTipsGet(Model model) {
         model.addAttribute("matchtips", new MatchTips());
         return "matchtips";
