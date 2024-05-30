@@ -10,8 +10,21 @@
 <body>
 <div class="container">
     <h1 class="mb-5">EM2024</h1>
-    <div th:each="matchx : ${matches}">
-        <div th:replace="~{fragments/match :: matchen}">
+<!--    <div th:each="match : ${matches}">-->
+<!--        <div th:replace="~{fragments/matchen :: matchen}">-->
+<!--        </div>-->
+<!--    </div>-->
+    <div th:each="match : ${matches}">
+        <div class="row">
+            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="'#' + ${match.date}">#1 14/6</div>
+            <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${match.hemmaLag} + ' - ' + ${match.bortaLag}">Tyskland - Hammarby</div>
+            <div class="col-md-2 bg-success border rounded-4">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="" aria-label="Hemma">
+                    <span class="input-group-text">-</span>
+                    <input type="text" class="form-control" placeholder="" aria-label="Borta">
+                </div>
+            </div>
         </div>
     </div>
 

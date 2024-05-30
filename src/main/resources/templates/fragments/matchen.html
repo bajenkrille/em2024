@@ -9,13 +9,13 @@
 </head>
 <body>
 <div class="row" th:fragment="matchen">
-    <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="'#' + ${matchx.id} + ' ' + ${matchx.date}">#1 14/6</div>
-    <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${matchx.hemmaLag} + ' - ' + ${matchx.bortaLag}">Tyskland - Hammarby</div>
+    <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="'#' + ${match.date}">#1 14/6</div>
+    <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${match.hemmaLag} + ' - ' + ${match.bortaLag}">Tyskland - Hammarby</div>
     <div class="col-md-2 bg-success border rounded-4">
         <div class="input-group input-group-sm">
-            <input type="text" class="form-control" placeholder="" aria-label="Hemma">
+            <input type="text" class="form-control" placeholder="" aria-label="Hemma"  th:field="*{hemmaMal}">
             <span class="input-group-text">-</span>
-            <input type="text" class="form-control" placeholder="" aria-label="Borta">
+            <input type="text" class="form-control" placeholder="" aria-label="Borta"  th:field="*{bortaMal}">
         </div>
     </div>
 </div>

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 import se.omyndigheten.em2024.domain.Matchen;
 import se.omyndigheten.em2024.repositories.MatchRepository;
 
+import java.util.Optional;
+
 /**
  * Created by Krille on 09/05/2024 13:48
  */
@@ -17,7 +19,8 @@ public class MatchDaoImpl implements MatchDao {
 
     @Override
     public Matchen getById(Long id) {
-        return matchRepository.getReferenceById(id);
+        Optional<Matchen> matchenOptional = matchRepository.findById(id);
+        return matchenOptional.get();
     }
 
     @Override

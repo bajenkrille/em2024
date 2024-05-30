@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import se.omyndigheten.em2024.domain.Deltagare;
 import se.omyndigheten.em2024.domain.MatchTips;
 import se.omyndigheten.em2024.services.MatchTipsService;
 import se.omyndigheten.em2024.services.TipsService;
@@ -24,7 +23,7 @@ public class TipsController {
         this.tipsService = tipsService;
     }
 
-    @RequestMapping("matchtips")
+    @RequestMapping("/matchtips")
     public String getTips(Model model){
 
         model.addAttribute("matches", tipsService.getAllMatches());
@@ -37,7 +36,7 @@ public class TipsController {
         return "matchtips";
     }
 
-    @PostMapping("/matchTips")
+    //@PostMapping("/matchTips")
     public String matchTipsSubmit(@ModelAttribute MatchTips matchTips, Model model) {
         model.addAttribute("matchtips", matchTips);
         matchTipsService.saveMatchTips(matchTips);
