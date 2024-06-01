@@ -3,6 +3,7 @@ package se.omyndigheten.em2024.services;
 import org.springframework.stereotype.Service;
 import se.omyndigheten.em2024.domain.Matchen;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,5 +11,5 @@ import java.util.Map;
  */
 public interface TipsService {
 
-    public Map<Long,Matchen> getAllMatches();
+    public List<Matchen> getAllMatches();
 }

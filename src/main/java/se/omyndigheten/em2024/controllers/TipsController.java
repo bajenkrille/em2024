@@ -36,7 +36,7 @@ public class TipsController {
         return "matchtips";
     }
 
-    //@PostMapping("/matchTips")
+    @PostMapping("/matchTips")
     public String matchTipsSubmit(@ModelAttribute MatchTips matchTips, Model model) {
         model.addAttribute("matchtips", matchTips);
         matchTipsService.saveMatchTips(matchTips);
