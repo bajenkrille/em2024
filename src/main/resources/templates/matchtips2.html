@@ -9,10 +9,10 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="mb-5">EM2024</h1>
+    <h1 class="mb-5">EM2024b</h1>
     <div th:each="match, iter : ${matches}">
-        <div class="row" th:object="${match + iter}">
-            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${id}"></div>
+        <div class="row">
+            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${match.id}"></div>
             <div class="col-2 text-bg-success border fs-5 rounded-3" th:text="${match.date} + ' Grupp ' + ${match.grupp}">#1 14/6</div>
             <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${match.hemmaLag} + ' - ' + ${match.bortaLag}">Tyskland - Hammarby</div>
             <div class="col-md-2 bg-success border rounded-4">

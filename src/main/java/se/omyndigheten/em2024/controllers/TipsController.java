@@ -17,29 +17,35 @@ import se.omyndigheten.em2024.services.TipsService;
 public class TipsController {
 
     private TipsService tipsService;
+
     private MatchTipsService matchTipsService;
 
-    public TipsController(TipsService tipsService) {
+    public TipsController(TipsService tipsService, MatchTipsService matchTipsService) {
         this.tipsService = tipsService;
+        this.matchTipsService = matchTipsService;
     }
 
     @RequestMapping("/matchtips")
     public String getTips(Model model){
 
         model.addAttribute("matches", tipsService.getAllMatches());
-        return "matchtips";
+        return "matchtips2";
     }
 
-    //@GetMapping("/matchtips")
+    @GetMapping("/matchtips2")
     public String matchTipsGet(Model model) {
-        model.addAttribute("matchtips", new MatchTips());
-        return "matchtips";
+        for (int i = 1; i <= 36; i++) {
+            model.addAttribute("matchtips" + i, new MatchTips());
+        }
+        return "matchtips2";
     }
 
-    @PostMapping("/matchTips")
+    @PostMapping("/matchTips2")
     public String matchTipsSubmit(@ModelAttribute MatchTips matchTips, Model model) {
-        model.addAttribute("matchtips", matchTips);
-        matchTipsService.saveMatchTips(matchTips);
+        for (int i = 1; i <= 36; i++) {
+            model.addAttribute("matchtips" + i, matchTips);
+            matchTipsService.saveMatchTips(matchTips);
+        }
         return "result";
     }
 
