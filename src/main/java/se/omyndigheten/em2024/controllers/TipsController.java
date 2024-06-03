@@ -10,6 +10,8 @@ import se.omyndigheten.em2024.domain.MatchTips;
 import se.omyndigheten.em2024.services.MatchTipsService;
 import se.omyndigheten.em2024.services.TipsService;
 
+import java.util.List;
+
 /**
  * Created by Krille on 17/05/2024 17:21
  */
@@ -27,25 +29,20 @@ public class TipsController {
 
     @RequestMapping("/matchtips")
     public String getTips(Model model){
-
         model.addAttribute("matches", tipsService.getAllMatches());
         return "matchtips2";
     }
 
     @GetMapping("/matchtips2")
     public String matchTipsGet(Model model) {
-        for (int i = 1; i <= 36; i++) {
-            model.addAttribute("matchtips" + i, new MatchTips());
-        }
+        model.addAttribute("matchtips", matchTipsService.getMatchTipsList());
         return "matchtips2";
     }
 
     @PostMapping("/matchTips2")
-    public String matchTipsSubmit(@ModelAttribute MatchTips matchTips, Model model) {
-        for (int i = 1; i <= 36; i++) {
-            model.addAttribute("matchtips" + i, matchTips);
-            matchTipsService.saveMatchTips(matchTips);
-        }
+    public String matchTipsSubmit(@ModelAttribute List<MatchTips> matchTipsList, Model model) {
+        model.addAttribute("matchtips", matchTipsList);
+        matchTipsService.saveMatchTips(matchTipsList);
         return "result";
     }
 
