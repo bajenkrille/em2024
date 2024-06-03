@@ -145,8 +145,8 @@ public class Matchen {
         result = 31 * result + (grupp != null ? grupp.hashCode() : 0);
         result = 31 * result + (hemmaLag != null ? hemmaLag.hashCode() : 0);
         result = 31 * result + (bortaLag != null ? bortaLag.hashCode() : 0);
-        result = 31 * result + hemmaMal;
-        result = 31 * result + bortaMal;
+        result = 31 * result + (hemmaMal != null ? hemmaMal.hashCode() : 0);
+        result = 31 * result + (bortaMal != null ? bortaMal.hashCode() : 0);
         result = 31 * result + (played ? 1 : 0);
         result = 31 * result + (matchTipsSet != null ? matchTipsSet.hashCode() : 0);
         return result;
