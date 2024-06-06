@@ -13,8 +13,8 @@ public class MatchTips {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int hemmaMal;
-    private int bortaMal;
+    private Integer hemmaMal;
+    private Integer bortaMal;
     @ManyToOne
     private Deltagare deltagare;
     @ManyToOne
@@ -28,20 +28,20 @@ public class MatchTips {
         return id;
     }
 
-    public int getHemmaMal() {
+    public Integer getHemmaMal() {
         return hemmaMal;
     }
 
-    public void setHemmaMal(int tipsHemmaMal) {
-        this.hemmaMal = tipsHemmaMal;
+    public void setHemmaMal(Integer hemmaMal) {
+        this.hemmaMal = hemmaMal;
     }
 
-    public int getBortaMal() {
+    public Integer getBortaMal() {
         return bortaMal;
     }
 
-    public void setBortaMal(int tipsBortaMal) {
-        this.bortaMal = tipsBortaMal;
+    public void setBortaMal(Integer bortaMal) {
+        this.bortaMal = bortaMal;
     }
 
     public Deltagare getDeltagare() {
@@ -67,9 +67,9 @@ public class MatchTips {
 
         MatchTips matchTips = (MatchTips) o;
 
-        if (hemmaMal != matchTips.hemmaMal) return false;
-        if (bortaMal != matchTips.bortaMal) return false;
         if (!Objects.equals(id, matchTips.id)) return false;
+        if (!Objects.equals(hemmaMal, matchTips.hemmaMal)) return false;
+        if (!Objects.equals(bortaMal, matchTips.bortaMal)) return false;
         if (!Objects.equals(deltagare, matchTips.deltagare)) return false;
         return Objects.equals(matchen, matchTips.matchen);
     }
@@ -77,8 +77,8 @@ public class MatchTips {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + hemmaMal;
-        result = 31 * result + bortaMal;
+        result = 31 * result + (hemmaMal != null ? hemmaMal.hashCode() : 0);
+        result = 31 * result + (bortaMal != null ? bortaMal.hashCode() : 0);
         result = 31 * result + (deltagare != null ? deltagare.hashCode() : 0);
         result = 31 * result + (matchen != null ? matchen.hashCode() : 0);
         return result;

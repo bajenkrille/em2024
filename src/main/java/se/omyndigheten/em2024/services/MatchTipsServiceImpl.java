@@ -31,7 +31,7 @@ public class MatchTipsServiceImpl implements MatchTipsService {
     @Override
     public List<MatchTips> getMatchTipsList() {
         List<MatchTips> matchTipsList = new ArrayList<>();
-        for (long n = 1; n <= 36; n++) {
+        for (long n = 1; n <= 10; n++) {
             Matchen matchen = matchDao.getById(n);
             MatchTips matchTips = new MatchTips();
             matchTips.setMatchen(matchen);

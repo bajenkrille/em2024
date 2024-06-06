@@ -18,32 +18,59 @@ import java.util.List;
 @Controller
 public class TipsController {
 
-    private TipsService tipsService;
+    private final TipsService tipsService;
 
-    private MatchTipsService matchTipsService;
+    private final MatchTipsService matchTipsService;
 
     public TipsController(TipsService tipsService, MatchTipsService matchTipsService) {
         this.tipsService = tipsService;
         this.matchTipsService = matchTipsService;
     }
+    public static class MatchTipsListWrapper {
+        private List<MatchTips> matchTipsList;
 
-    @RequestMapping("/matchtips")
+        // Getters and Setters
+        public List<MatchTips> getMatchTipsList() {
+            return matchTipsList;
+        }
+
+        public void setMatchTipsList(List<MatchTips> matchTipsList) {
+            this.matchTipsList = matchTipsList;
+        }
+    }
+
+    @GetMapping("/matchtips")
+    public String matchTipsGet(Model model) {
+        MatchTipsListWrapper wrapper = new MatchTipsListWrapper();
+        wrapper.setMatchTipsList(matchTipsService.getMatchTipsList());
+        model.addAttribute("matchTipsWrapper", wrapper);
+        return "matchtips";
+    }
+
+    @PostMapping("/matchtips")
+    public String matchTipsSubmit(@ModelAttribute MatchTipsListWrapper matchTipsWrapper, Model model) {
+        model.addAttribute("matchtips", matchTipsWrapper.getMatchTipsList());
+        matchTipsService.saveMatchTips(matchTipsWrapper.getMatchTipsList());
+        return "matchtips3";
+    }
+
+    //@RequestMapping("/matchtips")
     public String getTips(Model model){
         model.addAttribute("matches", tipsService.getAllMatches());
         return "matchtips2";
     }
 
-    @GetMapping("/matchtips2")
-    public String matchTipsGet(Model model) {
-        model.addAttribute("matchtips", matchTipsService.getMatchTipsList());
-        return "matchtips2";
-    }
+    //@GetMapping("/matchtips")
+//    public String matchTipsGet(Model model) {
+//        model.addAttribute("matchtips", matchTipsService.getMatchTipsList());
+//        return "matchtips";
+//    }
 
-    @PostMapping("/matchTips2")
+    //@PostMapping("/matchtips")
     public String matchTipsSubmit(@ModelAttribute List<MatchTips> matchTipsList, Model model) {
         model.addAttribute("matchtips", matchTipsList);
         matchTipsService.saveMatchTips(matchTipsList);
-        return "result";
+        return "matchtips";
     }
 
 }

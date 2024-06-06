@@ -6,16 +6,20 @@
 </head>
 <body>
 <h1>Form</h1>
-<form action="#" th:action="@{/deltagare}" th:object="${deltagare}" method="post">
-    <p>Id: <input type="text" th:field="*{id}" /></p>
-    <p>Förnamn: <input type="text" th:field="*{firstName}" /></p>
-    <p>Efternamn: <input type="text" th:field="*{lastName}" /></p>
-    <p>Artistnamn: <input type="text" th:field="*{nickName}" /></p>
-    <p>Email: <input type="text" th:field="*{email}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
-    <p>Phone: <input type="text" th:field="*{phoneNumber}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+<div class="container">
+    <div class="row"></div>
 
+    <form action="#" th:action="@{/deltagare}" th:object="${deltagare}" method="post">
+        <div class="row"></div>
+        <p>Id: <input type="text" th:field="*{id}" /></p>
+        <p>Förnamn: <input type="text" th:field="*{firstName}" /></p>
+        <p>Efternamn: <input type="text" th:field="*{lastName}" /></p>
+        <p>Artistnamn: <input type="text" th:field="*{nickName}" /></p>
+        <p>Email: <input type="text" th:field="*{email}" /></p>
+        <p>Password: <input type="text" th:field="*{password}" /></p>
+        <p>Phone: <input type="text" th:field="*{phoneNumber}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
 </body>
 </html>

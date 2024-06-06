@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <title>EM2024</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="mb-5">EM2024</h1>
+    <div th:each="tipsmatch : ${matchtips}">
+        <div class="row">
+            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>
+            <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>
+            <div class="col-2 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.hemmaMal} + ' - ' + ${tipsmatch.bortaMal}"></div>
+        </div>
+    </div>
+
+    <br /><br />
+
+</div>
+<div style="margin-top: 350px"></div>
+
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

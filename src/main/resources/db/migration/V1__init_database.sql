@@ -76,3 +76,9 @@ create table liga_seq (
 ) engine=InnoDB;
 
 insert into deltagare_seq values ( 1 );
+
+insert into match_tips_seq values ( 1 );
+
+insert into points_seq values ( 1 );
+
+insert into liga_seq values ( 1 );
