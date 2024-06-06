@@ -30,6 +30,7 @@ public class DeltagareController {
     public String anmalanSubmit(@ModelAttribute Deltagare deltagare, Model model) {
         model.addAttribute("deltagare", deltagare);
         deltagareService.saveDeltagare(deltagare);
-        return "result";
+        Long id = deltagare.getId();
+        return "redirect:/matchtips?deltagareId=" + deltagare.getId();
     }
 }

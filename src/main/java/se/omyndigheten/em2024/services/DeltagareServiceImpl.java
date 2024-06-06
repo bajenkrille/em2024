@@ -19,4 +19,8 @@ public class DeltagareServiceImpl implements DeltagareService {
     public Deltagare saveDeltagare(Deltagare deltagare) {
         return deltagareDao.saveNewDeltagare(deltagare);
     }
+    @Override
+    public Deltagare getDeltagareById(Long id) {
+        return deltagareDao.getById(id);
+    }
 }

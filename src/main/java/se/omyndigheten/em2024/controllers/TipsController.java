@@ -1,12 +1,12 @@
 package se.omyndigheten.em2024.controllers;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import se.omyndigheten.em2024.domain.Deltagare;
 import se.omyndigheten.em2024.domain.MatchTips;
+import se.omyndigheten.em2024.services.DeltagareService;
 import se.omyndigheten.em2024.services.MatchTipsService;
 import se.omyndigheten.em2024.services.TipsService;
 
@@ -19,11 +19,12 @@ import java.util.List;
 public class TipsController {
 
     private final TipsService tipsService;
-
+    private final DeltagareService deltagareService;
     private final MatchTipsService matchTipsService;
 
-    public TipsController(TipsService tipsService, MatchTipsService matchTipsService) {
+    public TipsController(TipsService tipsService, DeltagareService deltagareService, MatchTipsService matchTipsService) {
         this.tipsService = tipsService;
+        this.deltagareService = deltagareService;
         this.matchTipsService = matchTipsService;
     }
     public static class MatchTipsListWrapper {
@@ -40,7 +41,10 @@ public class TipsController {
     }
 
     @GetMapping("/matchtips")
-    public String matchTipsGet(Model model) {
+    public String matchTipsGet(@RequestParam("deltagareId") Long deltagareId, Model model) {
+        Deltagare deltagare = deltagareService.getDeltagareById(deltagareId);
+        model.addAttribute("deltagare", deltagare);
+
         MatchTipsListWrapper wrapper = new MatchTipsListWrapper();
         wrapper.setMatchTipsList(matchTipsService.getMatchTipsList());
         model.addAttribute("matchTipsWrapper", wrapper);
@@ -48,9 +52,10 @@ public class TipsController {
     }
 
     @PostMapping("/matchtips")
-    public String matchTipsSubmit(@ModelAttribute MatchTipsListWrapper matchTipsWrapper, Model model) {
+    public String matchTipsSubmit(@ModelAttribute MatchTipsListWrapper matchTipsWrapper, @RequestParam("deltagareId") Long deltagareId, Model model, HttpSession session) {
         model.addAttribute("matchtips", matchTipsWrapper.getMatchTipsList());
-        matchTipsService.saveMatchTips(matchTipsWrapper.getMatchTipsList());
+        Deltagare deltagare = deltagareService.getDeltagareById(deltagareId);
+        matchTipsService.saveMatchTips(matchTipsWrapper.getMatchTipsList(), deltagare);
         return "matchtips3";
     }
 

@@ -3,6 +3,7 @@ package se.omyndigheten.em2024.services;
 import org.springframework.stereotype.Service;
 import se.omyndigheten.em2024.dao.MatchDao;
 import se.omyndigheten.em2024.dao.MatchTipsDao;
+import se.omyndigheten.em2024.domain.Deltagare;
 import se.omyndigheten.em2024.domain.MatchTips;
 import se.omyndigheten.em2024.domain.Matchen;
 
@@ -22,9 +23,17 @@ public class MatchTipsServiceImpl implements MatchTipsService {
         this.matchTipsDao = matchTipsDao;
         this.matchDao = matchDao;
     }
+
     @Override
     public void saveMatchTips(List<MatchTips> matchTipsList) {
         for (MatchTips matchTips:matchTipsList){
+            matchTipsDao.saveNewMatchTips(matchTips);
+        }
+    }
+    @Override
+    public void saveMatchTips(List<MatchTips> matchTipsList, Deltagare deltagare) {
+        for (MatchTips matchTips:matchTipsList){
+            matchTips.setDeltagare(deltagare);
             matchTipsDao.saveNewMatchTips(matchTips);
         }
     }

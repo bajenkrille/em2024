@@ -2,24 +2,55 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <title>Anmälan EM 2024</title>
+    <style>
+        .bg-container {
+            background-image: url('/static/images/skysports.jpg');
+            background-size: cover; /* Detta gör att bilden täcker hela containern */
+            background-position: center; /* Detta centrerar bilden i containern */
+            background-repeat: no-repeat; /* Detta förhindrar att bilden upprepas */
+            height: 100vh; /* Justera höjden efter behov */
+        }
+    </style>
 </head>
 <body>
-<h1>Form</h1>
-<div class="container">
-    <div class="row"></div>
-
+<div class="container bg-container">
+    <h1 class="mb-5">Anmälan</h1>
     <form action="#" th:action="@{/deltagare}" th:object="${deltagare}" method="post">
-        <div class="row"></div>
-        <p>Id: <input type="text" th:field="*{id}" /></p>
-        <p>Förnamn: <input type="text" th:field="*{firstName}" /></p>
-        <p>Efternamn: <input type="text" th:field="*{lastName}" /></p>
-        <p>Artistnamn: <input type="text" th:field="*{nickName}" /></p>
-        <p>Email: <input type="text" th:field="*{email}" /></p>
-        <p>Password: <input type="text" th:field="*{password}" /></p>
-        <p>Phone: <input type="text" th:field="*{phoneNumber}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <div class="mb-3">
+            <label for="fornamn" class="form-label">Förnamn</label>
+            <input type="text" class="form-control" id="fornamn" aria-describedby="idHelp" th:field="*{firstName}">
+            <div id="idHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="efternamn" class="form-label">Efternamn</label>
+            <input type="text" class="form-control" id="efternamn" th:field="*{lastName}">
+        </div>
+        <div class="mb-3">
+            <label for="artistnamn" class="form-label">Artistnamn</label>
+            <input type="text" class="form-control" id="artistnamn" th:field="*{nickName}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" th:field="*{email}">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="psw" class="form-label">Password</label>
+            <input type="password" class="form-control" id="psw" th:field="*{password}">
+        </div>
+        <div class="mb-3">
+            <label for="tfn" class="form-label">Telefon</label>
+            <input type="text" class="form-control" id="tfn" th:field="*{phoneNumber}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-danger">Reset</button>
     </form>
 </div>
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

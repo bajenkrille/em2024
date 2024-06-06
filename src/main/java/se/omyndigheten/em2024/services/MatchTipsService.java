@@ -1,5 +1,6 @@
 package se.omyndigheten.em2024.services;
 
+import se.omyndigheten.em2024.domain.Deltagare;
 import se.omyndigheten.em2024.domain.MatchTips;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public interface MatchTipsService {
     public void saveMatchTips(List<MatchTips> matchTipsList);
+    public void saveMatchTips(List<MatchTips> matchTipsList, Deltagare deltagare);
 
     public List<MatchTips> getMatchTipsList();
 }

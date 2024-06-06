@@ -1,7 +1,7 @@
 package se.omyndigheten.em2024.dao;
 
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import se.omyndigheten.em2024.domain.Deltagare;
 import se.omyndigheten.em2024.repositories.DeltagareRepository;
 

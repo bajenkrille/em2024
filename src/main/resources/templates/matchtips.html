@@ -6,34 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <title>EM2024</title>
+    <style>
+        .bg-container {
+            background-image: url('/images/skysports.jpg');
+            background-size: cover; /* Detta gör att bilden täcker hela containern */
+            background-position: center; /* Detta centrerar bilden i containern */
+            background-repeat: no-repeat; /* Detta förhindrar att bilden upprepas */
+            height: 100vh; /* Justera höjden efter behov */
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+<div class="container bg-container">
     <h1 class="mb-5">EM2024</h1>
-<!--    <form action="#" th:action="@{/matchtips}" method="post">-->
-<!--        <div th:each="tipsmatch : ${matchtips}">-->
-<!--            <div class="row">-->
-<!--                <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>-->
-<!--                <div class="col-2 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.date} + ' Grupp ' + ${tipsmatch.matchen.grupp}">#1 14/6</div>-->
-<!--                <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}">Tyskland - Hammarby</div>-->
-<!--                <div class="col-md-2 bg-success border rounded-4">-->
-<!--                    <div class="input-group input-group-sm" th:object="${tipsmatch}">-->
-<!--&lt;!&ndash;                        <input type="text" class="form-control" placeholder="" aria-label="Hemma" th:field="*{hemmaMal}">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <span class="input-group-text">-</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <input type="text" class="form-control" placeholder="" aria-label="Borta" th:field="*{bortaMal}">&ndash;&gt;-->
-<!--                        <input type="text" class="form-control" name="hemmaMal" placeholder="" aria-label="Hemma">-->
-<!--                        <span class="input-group-text">-</span>-->
-<!--                        <input type="text" class="form-control" name="bortaMal" placeholder="" aria-label="Borta">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <input type="submit" value="Submit" /> <input type="reset" value="Reset" />-->
-<!--        </div>-->
-<!--    </form>-->
-
     <form action="#" th:action="@{/matchtips}" method="post" th:object="${matchTipsWrapper}">
+        <input type="hidden" name="deltagareId" th:value="${deltagare.id}" />
         <div th:each="tipsmatch, iterStat : ${matchTipsWrapper.matchTipsList}">
             <div class="row">
                 <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.id}" th:value="${tipsmatch.matchen.id}">

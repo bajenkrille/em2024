@@ -9,5 +9,6 @@ import se.omyndigheten.em2024.domain.Deltagare;
 @Service
 public interface DeltagareService {
     public Deltagare saveDeltagare(Deltagare deltagare);
+    public Deltagare getDeltagareById(Long id);
 
 }
