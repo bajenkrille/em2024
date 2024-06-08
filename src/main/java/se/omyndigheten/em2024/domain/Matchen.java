@@ -1,6 +1,5 @@
 package se.omyndigheten.em2024.domain;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -14,8 +13,8 @@ public class Matchen {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String date;
-    private String time;
+    private String datum;
+    private String tid;
     private String location;
     private String grupp;
     private String hemmaLag;
@@ -76,20 +75,20 @@ public class Matchen {
         this.played = played;
     }
 
-    public String getDate() {
-        return date;
+    public String getDatum() {
+        return datum;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDatum(String date) {
+        this.datum = date;
     }
 
-    public String getTime() {
-        return time;
+    public String getTid() {
+        return tid;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTid(String time) {
+        this.tid = time;
     }
 
     public String getLocation() {
@@ -127,8 +126,8 @@ public class Matchen {
         if (bortaMal != matchen.bortaMal) return false;
         if (played != matchen.played) return false;
         if (!Objects.equals(id, matchen.id)) return false;
-        if (!Objects.equals(date, matchen.date)) return false;
-        if (!Objects.equals(time, matchen.time)) return false;
+        if (!Objects.equals(datum, matchen.datum)) return false;
+        if (!Objects.equals(tid, matchen.tid)) return false;
         if (!Objects.equals(location, matchen.location)) return false;
         if (!Objects.equals(grupp, matchen.grupp)) return false;
         if (!Objects.equals(hemmaLag, matchen.hemmaLag)) return false;
@@ -139,8 +138,8 @@ public class Matchen {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + (time != null ? time.hashCode() : 0);
+        result = 31 * result + (datum != null ? datum.hashCode() : 0);
+        result = 31 * result + (tid != null ? tid.hashCode() : 0);
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (grupp != null ? grupp.hashCode() : 0);
         result = 31 * result + (hemmaLag != null ? hemmaLag.hashCode() : 0);

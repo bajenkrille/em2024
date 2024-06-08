@@ -6,20 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <title>EM2024</title>
+    <style>
+        .bg-container {
+            background-image: url('/images/skysports.jpg');
+            background-size: cover; /* Detta gör att bilden täcker hela containern */
+            background-position: center; /* Detta centrerar bilden i containern */
+            background-repeat: no-repeat; /* Detta förhindrar att bilden upprepas */
+            height: 100vh; /* Justera höjden efter behov */
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1 class="mb-5">EM2024</h1>
+<div class="container-fluid bg-container d-flex justify-content-center">
+    <div class="card bg-opacity-25 text-bg-danger mt-5" style="width: 50rem;height: 85rem">
+        <div class="card-body text-bg-success">
+            <div class="h3 card-title ms-5 mb-5 text-danger" th:text="'Tips för ' + ${deltagare.firstName} + ' ' + ${deltagare.lastName} + ' aka ' + ${deltagare.nickName}">Ditt tips EM 2024</div>
+            <div class="p card-text">
     <div th:each="tipsmatch : ${matchtips}">
-        <div class="row">
-            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>
-            <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>
-            <div class="col-2 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.hemmaMal} + ' - ' + ${tipsmatch.bortaMal}"></div>
+        <div class="row ms-5">
+            <div class="col-1 text-bg-danger border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>
+            <div class="col-5 text-bg-danger border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>
+            <div class="col-2 text-bg-danger border fs-5 rounded-3" th:text="${tipsmatch.hemmaMal} + ' - ' + ${tipsmatch.bortaMal}"></div>
         </div>
     </div>
-
-    <br /><br />
-
+            </div>
+        </div>
+    </div>
 </div>
 <div style="margin-top: 350px"></div>
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:width="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,13 +20,13 @@
 <div class="container-fluid bg-container d-flex justify-content-center">
     <div class="card bg-opacity-25 text-bg-success mt-5" style="width: 40rem;height: 45rem">
         <div class="card-body text-bg-success">
-            <div class="h3 card-title mb-5 text-success">Anmälan EM 2024</div>
+            <div class="h3 card-title mb-5 text-danger">Anmälan EM 2024</div>
             <div class="p card-text">
                 <form action="#" th:action="@{/deltagare}" th:object="${deltagare}" method="post">
                     <div class="mb-3">
                         <label for="fornamn" class="form-label">Förnamn</label>
                         <input type="text" class="form-control" id="fornamn" aria-describedby="idHelp" th:field="*{firstName}">
-                        <div id="idHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="idHelp" class="form-text-danger">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
                         <label for="efternamn" class="form-label">Efternamn</label>
@@ -53,10 +52,15 @@
                     <button type="submit" class="btn btn-success">Submit</button>
                     <button type="submit" class="btn btn-danger">Reset</button>
                 </form>
+
             </div>
         </div>
     </div>
+    <br /><br />
+
 </div>
+<div style="margin-top: 350px"></div>
+
 <script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

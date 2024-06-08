@@ -17,33 +17,38 @@
     </style>
 </head>
 <body>
-<div class="container bg-container">
-    <h1 class="mb-5">EM2024</h1>
-    <form action="#" th:action="@{/matchtips}" method="post" th:object="${matchTipsWrapper}">
-        <input type="hidden" name="deltagareId" th:value="${deltagare.id}" />
-        <div th:each="tipsmatch, iterStat : ${matchTipsWrapper.matchTipsList}">
-            <div class="row">
-                <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.id}" th:value="${tipsmatch.matchen.id}">
-                <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.date}" th:value="${tipsmatch.matchen.date}">
-                <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.grupp}" th:value="${tipsmatch.matchen.grupp}">
-                <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.hemmaLag}" th:value="${tipsmatch.matchen.hemmaLag}">
-                <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.bortaLag}" th:value="${tipsmatch.matchen.bortaLag}">
-                <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>
-                <div class="col-2 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.date} + ' Grupp ' + ${tipsmatch.matchen.grupp}"></div>
-                <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>
-                <div class="col-md-2 bg-success border rounded-4">
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="" aria-label="Hemma" th:field="*{matchTipsList[__${iterStat.index}__].hemmaMal}">
-                        <span class="input-group-text">-</span>
-                        <input type="text" class="form-control" placeholder="" aria-label="Borta" th:field="*{matchTipsList[__${iterStat.index}__].bortaMal}">
+<div class="container-fluid bg-container d-flex justify-content-center">
+    <div class="card bg-opacity-25 text-bg-success mt-5" style="width: 80rem;height: 45rem">
+        <div class="card-body text-bg-success">
+            <div class="h3 card-title mb-5 ms-5 text-success">Tippa EM 2024</div>
+            <div class="p card-text">
+                <form action="#" th:action="@{/matchtips}" method="post" th:object="${matchTipsWrapper}">
+                    <input type="hidden" name="deltagareId" th:value="${deltagare.id}" />
+                    <div th:each="tipsmatch, iterStat : ${matchTipsWrapper.matchTipsList}">
+                        <div class="row ms-5">
+                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.id}" th:value="${tipsmatch.matchen.id}">
+                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.datum}" th:value="${tipsmatch.matchen.datum}">
+                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.grupp}" th:value="${tipsmatch.matchen.grupp}">
+                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.hemmaLag}" th:value="${tipsmatch.matchen.hemmaLag}">
+                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.bortaLag}" th:value="${tipsmatch.matchen.bortaLag}">
+                            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>
+                            <div class="col-2 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.datum} + ' Grupp ' + ${tipsmatch.matchen.grupp}"></div>
+                            <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>
+                            <div class="col-lg-2 bg-success border rounded-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="" aria-label="Hemma" th:field="*{matchTipsList[__${iterStat.index}__].hemmaMal}">
+                                    <span class="input-group-text">-</span>
+                                    <input type="text" class="form-control" placeholder="" aria-label="Borta" th:field="*{matchTipsList[__${iterStat.index}__].bortaMal}">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-danger">Reset</button>
+                </form>
             </div>
         </div>
-        <div>
-            <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
-        </div>
-    </form>
+    </div>
 
     <div class="row" th:remove="all">
         <div class="col-1 text-bg-success border fs-5 rounded-4">#1 14/6</div>

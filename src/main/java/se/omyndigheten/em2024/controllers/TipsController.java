@@ -30,7 +30,6 @@ public class TipsController {
     public static class MatchTipsListWrapper {
         private List<MatchTips> matchTipsList;
 
-        // Getters and Setters
         public List<MatchTips> getMatchTipsList() {
             return matchTipsList;
         }
@@ -56,6 +55,7 @@ public class TipsController {
         model.addAttribute("matchtips", matchTipsWrapper.getMatchTipsList());
         Deltagare deltagare = deltagareService.getDeltagareById(deltagareId);
         matchTipsService.saveMatchTips(matchTipsWrapper.getMatchTipsList(), deltagare);
+        model.addAttribute("deltagare", deltagare);
         return "matchtips3";
     }
 
