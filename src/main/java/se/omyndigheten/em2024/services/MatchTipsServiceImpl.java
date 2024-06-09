@@ -36,6 +36,8 @@ public class MatchTipsServiceImpl implements MatchTipsService {
             matchTips.setDeltagare(deltagare);
             matchTipsDao.saveNewMatchTips(matchTips);
         }
+        WriteToFile toFile = new WriteToFile(deltagare.getNickName());
+        toFile.writeTipsToFile(matchTipsList);
     }
     @Override
     public List<MatchTips> getMatchTipsList() {

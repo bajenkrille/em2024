@@ -21,14 +21,19 @@
     <div class="card bg-opacity-25 text-bg-danger mt-5" style="width: 50rem;height: 85rem">
         <div class="card-body text-bg-success">
             <div class="h3 card-title ms-5 mb-5 text-danger" th:text="'Tips för ' + ${deltagare.firstName} + ' ' + ${deltagare.lastName} + ' aka ' + ${deltagare.nickName}">Ditt tips EM 2024</div>
+            <form action="#" th:action="@{/matchtips3}" method="post">
+                <input type="hidden" name="deltagareEpost" th:value="${deltagare.email}" />
+                <input type="hidden" name="deltagareArtistnamn" th:value="${deltagare.nickName}" />
+                <button type="submit" class="btn btn-danger mb-2">Skicka epost</button>
+            </form>
             <div class="p card-text">
-    <div th:each="tipsmatch : ${matchtips}">
-        <div class="row ms-5">
-            <div class="col-1 text-bg-danger border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>
-            <div class="col-5 text-bg-danger border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>
-            <div class="col-2 text-bg-danger border fs-5 rounded-3" th:text="${tipsmatch.hemmaMal} + ' - ' + ${tipsmatch.bortaMal}"></div>
-        </div>
-    </div>
+                <div th:each="tipsmatch : ${matchtips}">
+                    <div class="row ms-5">
+                        <div class="col-1 text-bg-danger border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>
+                        <div class="col-5 text-bg-danger border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>
+                        <div class="col-2 text-bg-danger border fs-5 rounded-3" th:text="${tipsmatch.hemmaMal} + ' - ' + ${tipsmatch.bortaMal}"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

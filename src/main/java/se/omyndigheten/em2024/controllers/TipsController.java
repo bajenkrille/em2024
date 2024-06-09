@@ -58,24 +58,4 @@ public class TipsController {
         model.addAttribute("deltagare", deltagare);
         return "matchtips3";
     }
-
-    //@RequestMapping("/matchtips")
-    public String getTips(Model model){
-        model.addAttribute("matches", tipsService.getAllMatches());
-        return "matchtips2";
-    }
-
-    //@GetMapping("/matchtips")
-//    public String matchTipsGet(Model model) {
-//        model.addAttribute("matchtips", matchTipsService.getMatchTipsList());
-//        return "matchtips";
-//    }
-
-    //@PostMapping("/matchtips")
-    public String matchTipsSubmit(@ModelAttribute List<MatchTips> matchTipsList, Model model) {
-        model.addAttribute("matchtips", matchTipsList);
-        matchTipsService.saveMatchTips(matchTipsList);
-        return "matchtips";
-    }
-
 }
