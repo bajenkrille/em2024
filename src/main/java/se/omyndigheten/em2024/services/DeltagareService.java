@@ -10,5 +10,7 @@ import se.omyndigheten.em2024.domain.Deltagare;
 public interface DeltagareService {
     public Deltagare saveDeltagare(Deltagare deltagare);
     public Deltagare getDeltagareById(Long id);
+    public Deltagare findDeltagareByNickname(String nickName);
+    public boolean doesNicknameExist(String nickName);
 
 }

@@ -18,7 +18,8 @@ public class WriteToFile {
     List<String> lines = new ArrayList<>();
 
     public WriteToFile(String s) {
-        filePath = "src/main/resources/tipsfiler/" + s + ".txt";
+        //filePath = "src/main/resources/tipsfiler/" + s + ".txt";
+        filePath = "/opt/em2024/tipsfiler/" + s + ".txt";
     }
 
     public void writeFile(String line) {

@@ -1,6 +1,7 @@
 package se.omyndigheten.em2024.dao;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import se.omyndigheten.em2024.domain.Matchen;
 import se.omyndigheten.em2024.repositories.MatchRepository;
 
@@ -29,6 +30,7 @@ public class MatchDaoImpl implements MatchDao {
     }
 
     @Override
+    @Transactional
     public Matchen updateMatch(Matchen matchen) {
         Matchen foundMatchen = matchRepository.getReferenceById(matchen.getId());
         foundMatchen.setHemmaMal(matchen.getHemmaMal());

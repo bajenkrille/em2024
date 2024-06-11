@@ -23,4 +23,13 @@ public class DeltagareServiceImpl implements DeltagareService {
     public Deltagare getDeltagareById(Long id) {
         return deltagareDao.getById(id);
     }
+    @Override
+    public Deltagare findDeltagareByNickname(String nickName) {
+        return deltagareDao.findDeltagareByNickname(nickName);
+    }
+    @Override
+    public boolean doesNicknameExist(String nickName) {
+        return findDeltagareByNickname(nickName).getNickName().equals(nickName);
+    }
+
 }

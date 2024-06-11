@@ -23,11 +23,13 @@
         <div class="card-body text-bg-success">
             <div class="h3 card-title mb-5 text-success">Anmälan EM 2024</div>
             <div class="p card-text">
-                <form action="#" th:action="@{/deltagare}" th:object="${deltagare}" method="post">
-                    <div class="mb-3">
+                <form action="#" th:action="@{/deltagare}" th:object="${deltagareCommand}" method="post">
+                    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                        <p th:text="#{deltagareCommand.hasErrors}">Error Message</p>
+                    </div>
+                    <div class="mb-3" th:class="${#fields.hasErrors('firstName')} ? 'mb-3 has-error' : 'mb-3'">
                         <label for="fornamn" class="form-label">Förnamn</label>
-                        <input type="text" class="form-control" id="fornamn" aria-describedby="idHelp" th:field="*{firstName}">
-                        <div id="idHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <input type="text" class="form-control" id="fornamn" aria-describedby="idHelp" th:field="*{firstName}"  th:errorclass="has-error">
                     </div>
                     <div class="mb-3">
                         <label for="efternamn" class="form-label">Efternamn</label>
@@ -36,19 +38,22 @@
                     <div class="mb-3">
                         <label for="artistnamn" class="form-label">Artistnamn</label>
                         <input type="text" class="form-control" id="artistnamn" th:field="*{nickName}">
+                        <div id="artistHelp" class="form-text text-danger">Man kan välja vad som helst inkl förnamn + efternamn men Björn Svensson-Larsson-Lundström kan ju bli tex Björn SLL...</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="email" aria-describedby="emailHelp" th:field="*{email}">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="emailHelp" class="form-text text-danger">Hit kommer bekräftelsemail skickas</div>
                     </div>
                     <div class="mb-3">
                         <label for="psw" class="form-label">Password</label>
                         <input type="password" class="form-control" id="psw" th:field="*{password}">
+                        <div id="pswHelp" class="form-text text-danger">Välj något enkelt! Inget hemligt lösenord som används på andra ställen!</div>
                     </div>
                     <div class="mb-3">
                         <label for="tfn" class="form-label">Telefon</label>
                         <input type="text" class="form-control" id="tfn" th:field="*{phoneNumber}">
+                        <div id="tfnHelp" class="form-text text-danger">Valfritt!</div>
                     </div>
                     <button type="submit" class="btn btn-success">Submit</button>
                     <button type="reset" class="btn btn-danger">Reset</button>

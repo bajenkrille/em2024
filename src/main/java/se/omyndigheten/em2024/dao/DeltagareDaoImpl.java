@@ -5,6 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 import se.omyndigheten.em2024.domain.Deltagare;
 import se.omyndigheten.em2024.repositories.DeltagareRepository;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 /**
  * Created by Krille on 07/05/2024 21:00
  */
@@ -26,6 +29,20 @@ public class DeltagareDaoImpl implements DeltagareDao {
     public Deltagare findDeltagareByName(String firstName, String lastName) {
         return deltagareRepository.findDeltagareByFirstNameAndLastName(firstName, lastName)
                 .orElseThrow();
+    }
+
+    @Override
+    public Deltagare findDeltagareByEmail(String email) {
+        return deltagareRepository.getDeltagareByEmail(email).orElseThrow();
+    }
+
+    @Override
+    public Deltagare findDeltagareByNickname(String nickName) {
+        try {
+            return deltagareRepository.findDeltagareByNickName(nickName).orElseThrow();
+        } catch (NoSuchElementException e){
+            return new Deltagare();
+        }
     }
 
     @Override

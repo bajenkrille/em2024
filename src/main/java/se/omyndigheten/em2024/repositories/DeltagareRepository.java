@@ -10,4 +10,8 @@ import java.util.Optional;
  */
 public interface DeltagareRepository extends JpaRepository<Deltagare, Long> {
     Optional<Deltagare> findDeltagareByFirstNameAndLastName(String firstName, String lastName);
+
+    Optional<Deltagare> getDeltagareByEmail(String email);
+
+    Optional<Deltagare> findDeltagareByNickName(String nickName);
 }
