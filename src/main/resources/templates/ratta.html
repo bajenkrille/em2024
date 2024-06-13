@@ -18,38 +18,61 @@
 </head>
 <body>
 <div class="container-fluid bg-container d-flex justify-content-center">
+<!--    <div class="card bg-opacity-25 text-bg-success mt-5" style="width: 80rem;height: 45rem">-->
+<!--        <div class="card-body text-bg-success">-->
+<!--            <div class="h3 card-title mb-5 ms-5 text-success">Rätta EM 2024</div>-->
+<!--            <div class="p card-text">-->
+<!--                <form action="#" th:action="@{/ratta}" method="post" th:object="${matchTipsWrapper}">-->
+<!--                    <input type="hidden" name="deltagareId" th:value="${deltagare.id}" />-->
+<!--                    <div th:each="tipsmatch, iterStat : ${matchTipsWrapper.matchTipsList}">-->
+<!--                        <div class="row ms-5">-->
+<!--                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.id}" th:value="${tipsmatch.matchen.id}">-->
+<!--                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.datum}" th:value="${tipsmatch.matchen.datum}">-->
+<!--                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.grupp}" th:value="${tipsmatch.matchen.grupp}">-->
+<!--                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.hemmaLag}" th:value="${tipsmatch.matchen.hemmaLag}">-->
+<!--                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.bortaLag}" th:value="${tipsmatch.matchen.bortaLag}">-->
+<!--                            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>-->
+<!--                            <div class="col-2 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.datum} + ' Grupp ' + ${tipsmatch.matchen.grupp}"></div>-->
+<!--                            <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>-->
+<!--                            <div class="col-lg-2 bg-success border rounded-4">-->
+<!--                                <div class="input-group input-group-sm">-->
+<!--                                    <input type="text" class="form-control" placeholder="" aria-label="Hemma" th:field="*{matchTipsList[__${iterStat.index}__].hemmaMal}">-->
+<!--                                    <span class="input-group-text">-</span>-->
+<!--                                    <input type="text" class="form-control" placeholder="" aria-label="Borta" th:field="*{matchTipsList[__${iterStat.index}__].bortaMal}">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-success mt-2">Submit</button>-->
+<!--                    <button type="reset" class="btn btn-danger mt-2">Reset</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="card bg-opacity-25 text-bg-success mt-5" style="width: 80rem;height: 45rem">
         <div class="card-body text-bg-success">
             <div class="h3 card-title mb-5 ms-5 text-success">Tippa EM 2024</div>
             <div class="p card-text">
-                <form action="#" th:action="@{/ratta}" method="post" th:object="${matchTipsWrapper}">
-                    <input type="hidden" name="deltagareId" th:value="${deltagare.id}" />
-                    <div th:each="tipsmatch, iterStat : ${matchTipsWrapper.matchTipsList}">
-                        <div class="row ms-5">
-                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.id}" th:value="${tipsmatch.matchen.id}">
-                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.datum}" th:value="${tipsmatch.matchen.datum}">
-                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.grupp}" th:value="${tipsmatch.matchen.grupp}">
-                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.hemmaLag}" th:value="${tipsmatch.matchen.hemmaLag}">
-                            <input type="hidden" th:field="*{matchTipsList[__${iterStat.index}__].matchen.bortaLag}" th:value="${tipsmatch.matchen.bortaLag}">
-                            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.matchen.id}"></div>
-                            <div class="col-2 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.datum} + ' Grupp ' + ${tipsmatch.matchen.grupp}"></div>
-                            <div class="col-5 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.matchen.hemmaLag} + ' - ' + ${tipsmatch.matchen.bortaLag}"></div>
-                            <div class="col-lg-2 bg-success border rounded-4">
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="" aria-label="Hemma" th:field="*{matchTipsList[__${iterStat.index}__].hemmaMal}">
-                                    <span class="input-group-text">-</span>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Borta" th:field="*{matchTipsList[__${iterStat.index}__].bortaMal}">
+                <form action="#" th:action="@{/rattad}" method="post" th:object="${matchenlist}">
+                    <div th:each="tipsmatch, iterStat : ${matchenlist}">
+                        <div class="row ms-5 mb-2">
+                            <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.id} + ' ' + ${tipsmatch.datum}">#2 15/6</div>
+                            <div class="col-4 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.hemmaLag} + ' - ' + ${tipsmatch.bortaLag}">Östsöder - Nordsöder</div>
+                            <div class="col-3 bg-success border rounded-4">
+                                <div class="input-group  input-group-sm">
+                                    <input type="text" class="form-control" placeholder="" aria-label="hemma" th:field="*{matchList[__${iterStat.index}__].hemmaMal}" aria-describedby="button-addon2">
+                                    <input type="text" class="form-control" placeholder="" aria-label="borta" th:field="*{matchList[__${iterStat.index}__].bortaMal}" aria-describedby="button-addon2">
+                                    <input class="form-check-input ms-1" type="checkbox" value="" id="flexCheckChecked" th:field="*{matchList[__${iterStat.index}__].played}">
+                                    <label class="form-check-label ms-1" for="flexCheckChecked">Rättad</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-2">Submit</button>
-                    <button type="reset" class="btn btn-danger mt-2">Reset</button>
                 </form>
             </div>
         </div>
     </div>
-    <div class="card bg-opacity-25 text-bg-success mt-5" style="width: 80rem;height: 45rem">
+    <div th:remove="all" class="card bg-opacity-25 text-bg-success mt-5" style="width: 80rem;height: 45rem">
         <div class="card-body text-bg-success">
             <div class="h3 card-title mb-5 ms-5 text-success">Tippa EM 2024</div>
             <div class="p card-text">
@@ -61,7 +84,7 @@
                             <div class="input-group  input-group-sm">
                                 <input type="text" class="form-control" placeholder="hemma" aria-label="hemma" aria-describedby="button-addon2">
                                 <input type="text" class="form-control" placeholder="borta" aria-label="borta" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-danger" type="button" id="button-addon2">Rätta</button>
+                                <button class="btn btn-outline-danger" type="button" id="button-addon3">Rätta</button>
                             </div>
                         </form>
                     </div>

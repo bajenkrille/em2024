@@ -18,10 +18,12 @@ public class MatchTipsServiceImpl implements MatchTipsService {
 
     private MatchTipsDao matchTipsDao;
     private MatchDao matchDao;
+    private WriteToFile writeToFile;
 
-    public MatchTipsServiceImpl(MatchTipsDao matchTipsDao, MatchDao matchDao) {
+    public MatchTipsServiceImpl(MatchTipsDao matchTipsDao, MatchDao matchDao, WriteToFile writeToFile) {
         this.matchTipsDao = matchTipsDao;
         this.matchDao = matchDao;
+        this.writeToFile = writeToFile;
     }
 
     @Override
@@ -36,8 +38,7 @@ public class MatchTipsServiceImpl implements MatchTipsService {
             matchTips.setDeltagare(deltagare);
             matchTipsDao.saveNewMatchTips(matchTips);
         }
-        WriteToFile toFile = new WriteToFile(deltagare.getNickName());
-        toFile.writeTipsToFile(matchTipsList);
+        writeToFile.writeTipsToFile(matchTipsList,deltagare.getNickName());
     }
     @Override
     public List<MatchTips> getMatchTipsList() {

@@ -1,5 +1,7 @@
 package se.omyndigheten.em2024.services;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import se.omyndigheten.em2024.domain.MatchTips;
 
 import java.io.IOException;
@@ -13,13 +15,14 @@ import java.util.List;
 /**
  * Created by Krille on 09/06/2024 19:37
  */
+@Component
 public class WriteToFile {
     String filePath;
     List<String> lines = new ArrayList<>();
+    @Value("${pathtotips}")
+    private String path;
 
-    public WriteToFile(String s) {
-        //filePath = "src/main/resources/tipsfiler/" + s + ".txt";
-        filePath = "/opt/em2024/tipsfiler/" + s + ".txt";
+    public WriteToFile() {
     }
 
     public void writeFile(String line) {
@@ -31,7 +34,7 @@ public class WriteToFile {
             e.printStackTrace();
         }
     }
-    public void writeTipsToFile(List<MatchTips> matchTipsList) {
+    public void writeTipsToFile(List<MatchTips> matchTipsList, String s) {
         for (MatchTips matchTips:matchTipsList){
             String hemmaLag = matchTips.getMatchen().getHemmaLag();
             String bortaLag = matchTips.getMatchen().getBortaLag();
@@ -40,6 +43,8 @@ public class WriteToFile {
             String line = hemmaLag + " - " + bortaLag + "\t" + hemmaMal + " - " + bortaMal;
             lines.add(line);
         }
+
+        filePath = path + s + ".txt";
 
         try {
             Files.write(Paths.get(filePath), lines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
