@@ -16,4 +16,6 @@ public interface MatchTipsDao {
     MatchTips updateMatchTips(MatchTips matchTips);
 
     void deleteMatchTipsById(Long id);
+
+    public MatchTips findMatchTipsByMatchenIdAndDeltagareId(Long matchenId, Long deltagareId);
 }

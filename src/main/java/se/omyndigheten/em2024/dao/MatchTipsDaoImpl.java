@@ -39,4 +39,9 @@ public class MatchTipsDaoImpl implements MatchTipsDao {
     public void deleteMatchTipsById(Long id) {
         matchTipsRepository.deleteById(id);
     }
+
+    @Override
+    public MatchTips findMatchTipsByMatchenIdAndDeltagareId(Long matchenId, Long deltagareId) {
+        return matchTipsRepository.findMatchTipsByMatchenIdAndDeltagare_Id(matchenId,deltagareId).orElseThrow();
+    }
 }

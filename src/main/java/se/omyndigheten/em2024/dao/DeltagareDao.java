@@ -2,6 +2,7 @@ package se.omyndigheten.em2024.dao;
 
 import se.omyndigheten.em2024.domain.Deltagare;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -10,6 +11,7 @@ import java.util.Optional;
 public interface DeltagareDao {
 
     Deltagare getById(Long id);
+    List<Deltagare> findAll();
 
     Deltagare findDeltagareByName(String firstName, String lastName);
     Deltagare findDeltagareByEmail(String email);

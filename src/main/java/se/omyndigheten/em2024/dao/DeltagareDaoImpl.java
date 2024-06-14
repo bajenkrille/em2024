@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import se.omyndigheten.em2024.domain.Deltagare;
 import se.omyndigheten.em2024.repositories.DeltagareRepository;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -23,6 +24,11 @@ public class DeltagareDaoImpl implements DeltagareDao {
     @Override
     public Deltagare getById(Long id) {
         return deltagareRepository.getReferenceById(id);
+    }
+
+    @Override
+    public List<Deltagare> findAll() {
+        return deltagareRepository.findAll();
     }
 
     @Override

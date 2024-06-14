@@ -54,7 +54,7 @@
             <div class="h3 card-title mb-5 ms-5 text-success">Tippa EM 2024</div>
             <div class="p card-text">
                 <form action="#" th:action="@{/rattad}" method="post" th:object="${matchenlist}">
-                    <div th:each="tipsmatch, iterStat : ${matchenlist}">
+                    <div th:each="tipsmatch, iterStat : ${matchenlist.matchList}">
                         <div class="row ms-5 mb-2">
                             <div class="col-1 text-bg-success border fs-5 rounded-4" th:text="${tipsmatch.id} + ' ' + ${tipsmatch.datum}">#2 15/6</div>
                             <div class="col-4 text-bg-success border fs-5 rounded-3" th:text="${tipsmatch.hemmaLag} + ' - ' + ${tipsmatch.bortaLag}">Östsöder - Nordsöder</div>

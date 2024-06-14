@@ -31,7 +31,7 @@ public class EmailController {
     }
 
     @RequestMapping("/matchtips3")
-    public String matchTipsSubmit(@ModelAttribute TipsController.MatchTipsListWrapper matchTipsWrapper, @RequestParam("deltagareEpost") String deltagareEpost,
+    public String matchTipsSubmit(@ModelAttribute MatchTipsController.MatchTipsListWrapper matchTipsWrapper, @RequestParam("deltagareEpost") String deltagareEpost,
                                   @RequestParam("deltagareArtistnamn") String deltagareArtistnamn, Model model) {
         model.addAttribute("matchtips", matchTipsWrapper.getMatchTipsList());
         String filePath = path + deltagareArtistnamn + ".txt";

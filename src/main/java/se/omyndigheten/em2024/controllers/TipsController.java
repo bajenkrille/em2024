@@ -1,20 +1,21 @@
 package se.omyndigheten.em2024.controllers;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import se.omyndigheten.em2024.commands.DeltagareCommand;
 import se.omyndigheten.em2024.commands.TipsCommand;
 import se.omyndigheten.em2024.domain.Deltagare;
 import se.omyndigheten.em2024.domain.MatchTips;
+import se.omyndigheten.em2024.domain.Matchen;
 import se.omyndigheten.em2024.services.DeltagareService;
 import se.omyndigheten.em2024.services.MatchTipsService;
 import se.omyndigheten.em2024.services.TipsService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by Krille on 17/05/2024 17:21
@@ -23,47 +24,38 @@ import java.util.List;
 public class TipsController {
 
     private final TipsService tipsService;
-    private final DeltagareService deltagareService;
     private final MatchTipsService matchTipsService;
+    private static final int PAGE_SIZE = 10;
 
-    public TipsController(TipsService tipsService, DeltagareService deltagareService, MatchTipsService matchTipsService) {
+    public TipsController(DeltagareService deltagareService, TipsService tipsService, MatchTipsService matchTipsService) {
         this.tipsService = tipsService;
-        this.deltagareService = deltagareService;
         this.matchTipsService = matchTipsService;
     }
-    public static class MatchTipsListWrapper {
-        private List<MatchTips> matchTipsList;
 
-        public List<MatchTips> getMatchTipsList() {
-            return matchTipsList;
-        }
+    @RequestMapping("/tips2")
+    public String tipsGet(Model model, @RequestParam(value = "page", defaultValue = "1") int page) {
+        List<Matchen> matchenList = tipsService.getAllMatches();
+        Map<Long, List<String>> tipsMap = matchTipsService.getListOfDeltagareAndTips();
+        List<String> nicknames = tipsMap.remove(0L);
 
-        public void setMatchTipsList(List<MatchTips> matchTipsList) {
-            this.matchTipsList = matchTipsList;
-        }
-    }
+        //Pagination
+        int totalDeltagare = nicknames.size();
+        int totalPages = (int) Math.ceil((double) totalDeltagare / PAGE_SIZE);
+        int start = (page - 1) * PAGE_SIZE;
+        int end = Math.min(start + PAGE_SIZE, totalDeltagare);
+        List<String> paginatedNicknames = nicknames.subList(start, end);
+        Map<Long, List<String>> paginatedTipsMap = tipsMap.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().subList(start, end)
+                ));
 
-    @GetMapping("/matchtips")
-    public String matchTipsGet(@RequestParam("deltagareId") Long deltagareId, Model model) {
-        Deltagare deltagare = deltagareService.getDeltagareById(deltagareId);
-        model.addAttribute("deltagare", deltagare);
+        model.addAttribute("matchenList", matchenList);
+        model.addAttribute("tipsMap", paginatedTipsMap);
+        model.addAttribute("nicknames", paginatedNicknames);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
 
-        MatchTipsListWrapper wrapper = new MatchTipsListWrapper();
-        wrapper.setMatchTipsList(matchTipsService.getMatchTipsList());
-        model.addAttribute("matchTipsWrapper", wrapper);
-        return "matchtips";
-    }
-
-    @PostMapping("/matchtips")
-    public String matchTipsSubmit(@ModelAttribute MatchTipsListWrapper matchTipsWrapper, @RequestParam("deltagareId") Long deltagareId, @Valid TipsCommand tC, BindingResult bindRes, Model model) {
-        model.addAttribute("matchtips", matchTipsWrapper.getMatchTipsList());
-        Deltagare deltagare = deltagareService.getDeltagareById(deltagareId);
-        if (bindRes.hasErrors()){
-            return "matchtips";
-        }
-
-        matchTipsService.saveMatchTips(matchTipsWrapper.getMatchTipsList(), deltagare);
-        model.addAttribute("deltagare", deltagare);
-        return "matchtips3";
+        return "tips2";
     }
 }

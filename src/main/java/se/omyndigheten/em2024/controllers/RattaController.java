@@ -24,13 +24,12 @@ public class RattaController {
     public RattaController(RattaService rattaService) {
         this.rattaService = rattaService;
     }
+
     public static class MatchListWrapper {
         private List<Matchen> matchList;
-
         public List<Matchen> getMatchList() {
             return matchList;
         }
-
         public void setMatchList(List<Matchen> matchList) {
             this.matchList = matchList;
         }

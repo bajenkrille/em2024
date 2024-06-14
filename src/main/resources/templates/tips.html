@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <title>EM2024</title>
+    <style>
+        .bg-container {
+            background-image: url('/images/skysports.jpg');
+            background-size: cover; /* Detta gör att bilden täcker hela containern */
+            background-position: center; /* Detta centrerar bilden i containern */
+            background-repeat: no-repeat; /* Detta förhindrar att bilden upprepas */
+            height: 100vh; /* Justera höjden efter behov */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Match Tips</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Match</th>
+            <th th:each="nickname : ${tipsMap.get(0)}" th:text="${nickname}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="matchen, stat : ${matchenList}">
+            <td th:text="${matchen.hemmaLag} + ' - ' + ${matchen.bortaLag}"></td>
+            <td th:each="nickname, iter : ${tipsMap.get(0)}" th:text="${tipsMap.get(matchen.id).get(iter.index)}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</html>
