@@ -2,6 +2,7 @@ package se.omyndigheten.em2024.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,8 +25,8 @@ public class Deltagare {
     private Set<MatchTips> matchTipsSet;
     @OneToMany(mappedBy = "deltagare")
     private Set<Points> pointsSet;
-    @ManyToOne
-    private Liga liga;
+    @ManyToMany(mappedBy = "deltagareSet")
+    private Set<Liga> ligaSet = new HashSet<>();
 
     public void setId(Long id) {
         this.id = id;
@@ -106,12 +107,12 @@ public class Deltagare {
         this.pointsSet = pointsSet;
     }
 
-    public Liga getLiga() {
-        return liga;
+    public Set<Liga> getLigaSet() {
+        return ligaSet;
     }
 
-    public void setLiga(Liga liga) {
-        this.liga = liga;
+    public void setLigaSet(Set<Liga> ligaSet) {
+        this.ligaSet = ligaSet;
     }
 
     @Override
@@ -133,7 +134,7 @@ public class Deltagare {
         if (!Objects.equals(matchTipsSet, deltagare.matchTipsSet))
             return false;
         if (!Objects.equals(pointsSet, deltagare.pointsSet)) return false;
-        return Objects.equals(liga, deltagare.liga);
+        return Objects.equals(ligaSet, deltagare.ligaSet);
     }
 
     @Override
@@ -148,7 +149,7 @@ public class Deltagare {
         result = 31 * result + (hasPaid ? 1 : 0);
         result = 31 * result + (matchTipsSet != null ? matchTipsSet.hashCode() : 0);
         result = 31 * result + (pointsSet != null ? pointsSet.hashCode() : 0);
-        result = 31 * result + (liga != null ? liga.hashCode() : 0);
+        result = 31 * result + (ligaSet != null ? ligaSet.hashCode() : 0);
         return result;
     }
 }

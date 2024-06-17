@@ -23,7 +23,8 @@ public class DeltagareDaoImpl implements DeltagareDao {
 
     @Override
     public Deltagare getById(Long id) {
-        return deltagareRepository.getReferenceById(id);
+        return deltagareRepository.findById(id).orElseThrow();
+        //return deltagareRepository.getReferenceById(id);
     }
 
     @Override

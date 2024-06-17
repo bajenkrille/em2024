@@ -9,13 +9,11 @@ public interface MatchTipsDao {
 
     MatchTips getById(Long id);
 
-    //Tips findDeltagareByName(String firstName, String lastName);
-
     MatchTips saveNewMatchTips(MatchTips matchTips);
 
     MatchTips updateMatchTips(MatchTips matchTips);
 
     void deleteMatchTipsById(Long id);
 
-    public MatchTips findMatchTipsByMatchenIdAndDeltagareId(Long matchenId, Long deltagareId);
+    MatchTips findMatchTipsByMatchenIdAndDeltagareId(Long matchenId, Long deltagareId);
 }

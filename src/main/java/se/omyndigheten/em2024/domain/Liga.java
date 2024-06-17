@@ -2,6 +2,7 @@ package se.omyndigheten.em2024.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -16,8 +17,13 @@ public class Liga {
     private Long id;
     private String ligaName;
     private String description;
-    @OneToMany(mappedBy = "liga")
-    private Set<Deltagare> deltagareSet;
+    @ManyToMany
+    @JoinTable(
+            name = "liga_deltagare",
+            joinColumns = @JoinColumn(name = "liga_id"),
+            inverseJoinColumns = @JoinColumn(name = "deltagare_id")
+    )
+    private Set<Deltagare> deltagareSet = new HashSet<>();
 
     public void setId(Long id) {
         this.id = id;
@@ -51,6 +57,16 @@ public class Liga {
         this.deltagareSet = deltagareSet;
     }
 
+    public void addDeltagare(Deltagare deltagare) {
+        this.deltagareSet.add(deltagare);
+        deltagare.getLigaSet().add(this);
+    }
+
+    public void removeDeltagare(Deltagare deltagare) {
+        this.deltagareSet.remove(deltagare);
+        deltagare.getLigaSet().remove(this);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,7 +85,6 @@ public class Liga {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (ligaName != null ? ligaName.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (deltagareSet != null ? deltagareSet.hashCode() : 0);
         return result;
     }
 }

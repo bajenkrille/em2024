@@ -24,28 +24,24 @@ public class DeltagareController {
         this.deltagareService = deltagareService;
     }
 
-    @GetMapping("/deltagare")
+    @GetMapping("/deltagare_avstangd")
     public String anmalanGet(Model model) {
         model.addAttribute("deltagareCommand", new DeltagareCommand());
-        return "deltagare";
+        return "deltagare_avstangd";
     }
 
-    @PostMapping("/deltagare")
+    @PostMapping("/deltagare_avstangd")
     public String anmalanSubmit(@Valid @ModelAttribute("deltagareCommand") DeltagareCommand deltagareCommand, BindingResult bindRes, Model model) {
         //model.addAttribute("deltagare", deltagare);
 
         if (bindRes.hasErrors()){
-            return "deltagare";
+            return "deltagare_avstangd";
         }
 
         if (deltagareCommand.getNickName().isEmpty()){
             String newNickName = deltagareCommand.getFirstName() + deltagareCommand.getLastName().substring(0,3);
             deltagareCommand.setNickName(newNickName);
         }
-//        if (deltagareService.doesNicknameExist(deltagareCommand.getNickName())) {
-//            String newNickName = deltagareCommand.getFirstName() + deltagareCommand.getLastName().substring(0, 3);
-//            deltagareCommand.setNickName(newNickName);
-//        }
 
         Deltagare deltagare = new Deltagare();
         deltagare.setFirstName(deltagareCommand.getFirstName());

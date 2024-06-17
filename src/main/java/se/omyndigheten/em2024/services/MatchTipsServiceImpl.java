@@ -45,6 +45,12 @@ public class MatchTipsServiceImpl implements MatchTipsService {
         }
         writeToFile.writeTipsToFile(matchTipsList,deltagare.getNickName());
     }
+
+    @Override
+    public MatchTips getMatchTipsByDeltagareAndMatch(long deltagareId, long matchenId) {
+        return matchTipsDao.findMatchTipsByMatchenIdAndDeltagareId(matchenId, deltagareId);
+    }
+
     @Override
     public List<MatchTips> getMatchTipsList() {
         List<MatchTips> matchTipsList = new ArrayList<>();
@@ -70,10 +76,12 @@ public class MatchTipsServiceImpl implements MatchTipsService {
             List<String> deltagaresTipsList = new ArrayList<>();
             for (Deltagare deltagare:deltagareList){
                 MatchTips matchTips = matchTipsDao.findMatchTipsByMatchenIdAndDeltagareId(n,deltagare.getId());
-                String hemmaMal = matchTips.getHemmaMal().toString();
-                String bortaMal = matchTips.getBortaMal().toString();
-                String deltagaresTips = hemmaMal + "-" + bortaMal;
-                deltagaresTipsList.add(deltagaresTips);
+                if (matchTips != null) {
+                    String hemmaMal = matchTips.getHemmaMal().toString();
+                    String bortaMal = matchTips.getBortaMal().toString();
+                    String deltagaresTips = hemmaMal + "-" + bortaMal;
+                    deltagaresTipsList.add(deltagaresTips);
+                }
             }
             matchAndTipsMap.put(n ,deltagaresTipsList);
         }

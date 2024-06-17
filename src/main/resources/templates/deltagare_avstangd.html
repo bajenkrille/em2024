@@ -23,7 +23,7 @@
         <div class="card-body text-bg-success">
             <div class="h3 card-title mb-5 text-success">Anmälan EM 2024</div>
             <div class="p card-text">
-                <form action="#" th:action="@{/deltagare}" th:object="${deltagareCommand}" method="post">
+                <form action="#" th:action="@{/deltagare_avstangd}" th:object="${deltagareCommand}" method="post">
                     <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
                         <p th:text="#{deltagareCommand.hasErrors}">Error Message</p>
                     </div>

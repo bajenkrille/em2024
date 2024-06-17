@@ -12,6 +12,7 @@ import java.util.Map;
 public interface MatchTipsService {
     public void saveMatchTips(List<MatchTips> matchTipsList);
     public void saveMatchTips(List<MatchTips> matchTipsList, Deltagare deltagare);
+    public MatchTips getMatchTipsByDeltagareAndMatch(long deltagareId, long matchenId);
     public List<MatchTips> getMatchTipsList();
     public Map<Long, List<String>> getListOfDeltagareAndTips();
 

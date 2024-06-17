@@ -5,6 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 import se.omyndigheten.em2024.domain.Matchen;
 import se.omyndigheten.em2024.repositories.MatchRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 /**
@@ -42,4 +45,20 @@ public class MatchDaoImpl implements MatchDao {
     public void deleteMatchById(Long id) {
         matchRepository.deleteById(id);
     }
+
+    @Override
+    public Matchen findAllPlayedMatches() {
+        return null;
+    }
+
+    @Override
+    public Matchen findById(long id) {
+        try{
+            return matchRepository.findById(id).orElseThrow();
+        } catch(NoSuchElementException e) {
+            System.out.println("NoSuchElement: MatchenId = "+id);
+            return null;
+        }
+    }
+
 }

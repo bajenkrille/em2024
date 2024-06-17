@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import se.omyndigheten.em2024.dao.DeltagareDao;
 import se.omyndigheten.em2024.domain.Deltagare;
 
+import java.util.List;
+
 /**
  * Created by Krille on 23/05/2024 20:09
  */
@@ -23,6 +25,12 @@ public class DeltagareServiceImpl implements DeltagareService {
     public Deltagare getDeltagareById(Long id) {
         return deltagareDao.getById(id);
     }
+
+    @Override
+    public List<Deltagare> getAllaDeltagare() {
+        return deltagareDao.findAll();
+    }
+
     @Override
     public Deltagare findDeltagareByNickname(String nickName) {
         return deltagareDao.findDeltagareByNickname(nickName);

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+    <title>Ställning EM-tipset 2024</title>
+    <style>
+        .bg-container {
+            background-image: url('/images/skysports_smaller.jpg');
+            background-size: cover; /* Detta gör att bilden täcker hela containern */
+            background-position: center; /* Detta centrerar bilden i containern */
+            background-repeat: no-repeat; /* Detta förhindrar att bilden upprepas */
+            height: 100vh; /* Justera höjden efter behov */
+        }
+    </style>
+</head>
+<body>
+    <div class="container bg-container">
+        <h2>Ställning</h2>
+        <table class="table table-striped" data-toggle="table" data-search="true" data-sortable="true">
+            <thead>
+            <tr>
+                <th data-field="deltagare" data-sortable="true">Deltagare</th>
+                <th data-field="poang" data-sortable="true">Poäng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entry : ${poangMap}">
+                <td th:text="${entry.key}"></td>
+                <td th:text="${entry.value}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

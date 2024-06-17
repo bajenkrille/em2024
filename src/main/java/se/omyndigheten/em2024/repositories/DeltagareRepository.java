@@ -14,4 +14,6 @@ public interface DeltagareRepository extends JpaRepository<Deltagare, Long> {
     Optional<Deltagare> getDeltagareByEmail(String email);
 
     Optional<Deltagare> findDeltagareByNickName(String nickName);
+
+
 }

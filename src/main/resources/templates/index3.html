@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <title>Anmälan EM 2024</title>
+    <style>
+        .bg-container {
+            background-image: url('/images/skysports_smaller.jpg');
+            background-size: cover; /* Detta gör att bilden täcker hela containern */
+            background-position: center; /* Detta centrerar bilden i containern */
+            background-repeat: no-repeat; /* Detta förhindrar att bilden upprepas */
+            height: 100vh; /* Justera höjden efter behov */
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid bg-container d-flex justify-content-center">
+    <div class="card bg-opacity-50 text-bg-dark mt-5" style="width: 40rem;height: 45rem">
+        <div class="card-body dark">
+            <div class="h3 card-title mb-5 white">Anmälan EM 2024</div>
+            <div class="p card-text">
+                <h3>Då är det dags igen! The One and only EM-tips 2024 är här!</h3>
+                <p>Bortsett från utseendet är mycket sig likt.</p>
+                <ul>
+                    <li>Tävlingen, dvs tipset, pågår från gruppspelets början tills sista gruppspelsmatchen är spelad</li>
+                    <li>Resultatet i samtliga 36 matcher i gruppsspelet ska tippas</li>
+                    <li>Rätt tecken ger 1 poäng</li>
+                    <li>Rätt resultat ger ytterligare 1 poäng</li>
+                    <li>Rätt resultat i en match där det gjorts fyra mål eller mer ger ytterligare 1 poäng</li>
+                    <li>Man kan alltså få 1, 2 eller 3 poäng/match. Eller 0 poäng också för den delen</li>
+                    <li>Insatsen är 50 kr/rad</li>
+                    <li>Vinnaren tar hela potten, både pengarna och äran!</li>
+                    <li>Vinner gör den som fått flest poäng. Skulle flera ha samma poäng, vinner den som har flest rätta resultat (2- och 3-poängare). Därefter räknas flest 3-poängare.</li>
+                    <li>Tipset måste vara inskickat senast vid avspark i turneringens första match, fredag 14/6 kl. 21.00</li>
+                    <li>Betalning måste INTE ha inkommit vid avspark i första matchen, men om någon inte betalar kommer hen att uteslutas.</li>
+                    <li>Man får försöka få med sig familj, vänner och bekanta som man betraktar som pålitliga. The more the merrier och så blir ju vinstpotten större...</li>
+                </ul>
+                <br>
+                <h4 class="text-bg-danger">OBS! Tipssidorna är fortfarande under konstruktion. </h4>
+                <h4 class="text-bg-danger">Det finns tex ännu ingen kontroll av att alla måltips har fyllts i eller att era uppgifter ser korrekta ut.</h4>
+                <h4 class="text-bg-danger text-uppercase">Var alltså noggranna när ni fyller i!</h4>
+                <br>
+                <a th:unless="${external}" class="display-5 text-light bg-dark bg-opacity-25"  th:href="@{http://localhost:8080/deltagare}">Ta mig till anmälan...</a>
+                <a th:if="${external}" class="display-5 text-light bg-dark bg-opacity-25" th:href="@{https://www.omyndigheten.se/deltagare}">Ta mig till anmälan...</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
