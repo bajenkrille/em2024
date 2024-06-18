@@ -23,20 +23,24 @@
             <div class="h3 card-title mb-5 ms-5 text-success">Ligor EM 2024</div>
                 <div class="p card-text">
                     <div th:each="liga : ${allaLigor}">
-                        <div class="row ms-5 mb-1">
-                            <div class="col-3 text-bg-success border fs-5 rounded-start-4 rounded-end-3" th:text="${liga.ligaName}"></div>
-                            <div class="col-7 text-bg-success border fs-5 rounded-3" th:text="${liga.description}"></div>
+                        <div class="row ms-5 mb-1 bg-opacity-75">
+                            <div class="col-3 text-bg-dark border fs-5 rounded-start-4 rounded-end-3" th:text="${liga.ligaName}"></div>
+                            <div class="col-7 text-bg-dark border fs-5 rounded-start-3 rounded-end-4" th:text="${liga.description}"></div>
                         </div>
                     </div>
                     <form action="/visaligor" method="post">
                         <div class="mb-3 mt-5">
-                            <select name="liga" id="" class="form-select">
-                                <option value="" disabled selected>Välj en liga!</option>
-                                <!-- Iterate over the options here -->
-                                <option th:each="liga : ${allaLigor}" th:value="${liga.ligaName}" th:text="${liga.ligaName}">morning</option>
-                            </select>
+                            <div class="row ms-4 ps-2">
+                                <div class="col-md-4">
+                                    <select name="liga" id="" class="form-select">
+                                        <option value="" disabled selected>Välj en liga!</option>
+                                        <!-- Iterate over the options here -->
+                                        <option th:each="liga : ${allaLigor}" th:value="${liga.ligaName}" th:text="${liga.ligaName}">morning</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit">Submit</button>
+                        <button class="btn btn-success mt-2 ms-5" type="submit">Submit</button>
                     </form>
                 </div>
             </div>
