@@ -15,32 +15,85 @@
             background-repeat: no-repeat; /* Detta förhindrar att bilden upprepas */
             height: 100vh; /* Justera höjden efter behov */
         }
+        .square-btn {
+            display: block;
+            width: 100%;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #000;;
+        }
+
+        .square-btn::before {
+            content: "";
+            display: block;
+            padding-top: 100%; /* Aspect ratio 1:1 */
+        }
+
+        .square-btn img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the button */
+        }
+
     </style>
 </head>
 <body>
 <div class="container-fluid bg-container d-flex justify-content-center">
     <div class="card bg-opacity-50 text-bg-dark mt-5" style="width: 40rem;height: 45rem">
         <div class="card-body dark">
-            <div class="h3 card-title mb-5 white">Startsida EM 2024</div>
+            <div class="h1 card-title mb-5 white">The One and only EM-tips 2024</div>
             <div class="p card-text">
-                <h3>Välkommen in på The One and only EM-tips 2024 startsida!</h3>
-                <p>Den har just nu enklast möjliga utseende. Tanken är att det ska förbättras.</p>
-                <p>Nedanför här finns länkar till sidor som tycks fungera. Snabbt går det dock inte</p>
-                <p>men jag ska ta tag i saken när jag nu fått upp några grundläggande funktioner.</p>
+                <h3>Välkommen till startsidan!</h3>
+                <h4>Här kan du navigera till de olika sidorna.</h4>
                 <br><br><br>
-                <a class="h3 text-light bg-dark bg-opacity-25" th:href="@{stallning}">Visa ställning. Lägg märke till att det går att sortera kolumnerna!</a>
-                <br><br><br>
-                <a class="h3 text-light bg-dark bg-opacity-25" th:href="@{liga}">Skapa din egen liga. Välj "medtävlare" och långt långt ner hittar du en "submit-knapp...</a>
-                <br><br><br>
-                <a class="h3 text-light bg-dark bg-opacity-25" th:href="@{visaligor}">Här visas de ligor som finns och ställningen visas för den du väljer.</a>
-                <br><br><br>
-                <a class="h3 text-light bg-dark bg-opacity-25" th:href="@{tips}">Allas tips. Om det inte känns alldeles nödvändigt så ska ni kanske undvika den!</a>
-                <br><br><br>
-                <a class="h3 text-light bg-dark bg-opacity-25" th:href="@{spelschema}">Spelschemat för själva fotbollen...</a>
-          </div>
+                <div class="row">
+                    <div class="col-4">
+                        <a th:href="@{visaligor}" class="btn btn-primary square-btn" data-bs-toggle="tooltip" data-bs-title="Ligor">
+                            <img src="/images/björnligan.webp" alt="Image 1" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a th:href="@{liga}" class="btn btn-primary square-btn" data-bs-toggle="tooltip" data-bs-title="Skapa ligor">
+                            <img src="/images/skapa.jfif" alt="Image 3" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a th:href="@{deltagare}" class="btn btn-primary square-btn" data-bs-toggle="tooltip" data-bs-title="Deltagare">
+                            <img src="/images/folksamling_deltagare.jfif" alt="Image 2" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-4">
+                        <a th:href="@{spelschema}" class="btn btn-primary square-btn" data-bs-toggle="tooltip" data-bs-title="Spelschema">
+                            <img src="/images/spelschema.jfif" alt="Image 1" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a th:href="@{tips}" class="btn btn-primary square-btn" data-bs-toggle="tooltip" data-bs-title="Era tips">
+                            <img src="/images/tips.jpg" alt="Image 2" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a th:href="@{stallning}" class="btn btn-primary square-btn" data-bs-toggle="tooltip" data-bs-title="Ställning">
+                            <img src="/images/stallning.jpg" alt="Image 3" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
 <script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+</script>
+
 </body>
 </html>
