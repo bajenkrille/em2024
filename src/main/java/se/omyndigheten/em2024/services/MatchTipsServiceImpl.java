@@ -22,13 +22,13 @@ public class MatchTipsServiceImpl implements MatchTipsService {
     private MatchTipsDao matchTipsDao;
     private MatchDao matchDao;
     private DeltagareDao deltagareDao;
-    private WriteToFile writeToFile;
+    private FileService fileService;
 
-    public MatchTipsServiceImpl(MatchTipsDao matchTipsDao, MatchDao matchDao, DeltagareDao deltagareDao, WriteToFile writeToFile) {
+    public MatchTipsServiceImpl(MatchTipsDao matchTipsDao, MatchDao matchDao, DeltagareDao deltagareDao, FileService fileService) {
         this.matchTipsDao = matchTipsDao;
         this.matchDao = matchDao;
         this.deltagareDao = deltagareDao;
-        this.writeToFile = writeToFile;
+        this.fileService = fileService;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class MatchTipsServiceImpl implements MatchTipsService {
             matchTips.setDeltagare(deltagare);
             matchTipsDao.saveNewMatchTips(matchTips);
         }
-        writeToFile.writeTipsToFile(matchTipsList,deltagare.getNickName());
+        fileService.writeTipsToFile(matchTipsList,deltagare.getNickName());
     }
 
     @Override

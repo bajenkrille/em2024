@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>se.omyndigheten</groupId>
 	<artifactId>em2024</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.3-SNAPSHOT</version>
 	<name>em2024</name>
 	<description>em2024</description>
 	<properties>
